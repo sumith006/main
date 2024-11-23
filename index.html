@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Registra on Form</title>
+    <style>
+        body {
+            font-family: Arial, Helve ca, sans-serif;
+            background-color: rgb(164, 164, 160);
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 50px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px black;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: green;
+            color: aliceblue;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .message {
+            display: none;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registra on Form</h2>
+        <form id="registrationform">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="passwordconfirm">Confirm Password:</label>
+                <input type="password" id="passwordconfirm" name="passwordconfirm" required>
+            </div>
+            <button type="submit">Registra on</button>
+            <button type="button" id="clearform">Clear Form</button>
+        </form>
+        <div class="message" id="successmessage">Registra on successful! Thank You</div>
+    </div>
+    <script>
+        const form = document.getElementById("registrationform");
+        const message = document.getElementById("successmessage");
+        const clearButton = document.getElementById("clearform");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const password = document.getElementById("password").value;
+            const passwordconfirm = document.getElementById("passwordconfirm").value;
+            if (password !== passwordconfirm) {
+                alert("Passwords do not match!");
+                return;
+            }
+            form.style.display = "none";
+            message.style.display = "block";
+        });
+
+        clearButton.addEventListener("click", function () {
+            form.reset();
+            message.style.display = "none";
+            form.style.display = "block";
+        }); 
+    </script>
+</body>
+
+</html>
